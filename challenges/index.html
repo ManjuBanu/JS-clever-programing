@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="statics/css/style.css">
+    <title>Some Challenges</title>
+</head>
+<body>
+    <div class="container-1">
+        <h2>Challenge 1: Your Age in Days</h2>
+        <div class="flex-box-container-1">
+        <div>
+             <button class="btn btn-primary" onclick="ageInDays()" >Click Me</button>
+        </div>
+        <div>
+             <button class="btn btn-danger" onclick="reset()">reset</button>
+        </div>
+    </div>
+    <div class="flex-box-container-1">
+        <div id="flex-box-result"></div>
+    </div>
+</div>
+
+<div class="container-2">
+    <h2>Challenge 1: Cat Generator</h2>
+    <button class="btn btn-success" onclick="generateCat()">Generate Cat</button>
+    <div class="flex-box-container-2" id="flex-cat-gen">
+    </div>
+</div>
+
+<div class="container-3">
+    <h2>Challenge 1: Rock, Paper, Scissors</h2>
+    
+    <div class="flex-box-container-3" id="flex-rps-div">
+        <img src="statics/images/rock.jpeg" height="150" id="rock" width="150" onclick="rpsGame(this)"/>
+        <img src="statics/images/paper1.jpg" height="150" id="paper" width="150" onclick="rpsGame(this)"/>
+        <!-- https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-notebook-paper-background-design-template-d7dfa26f8c8c759652e2521f0ecd24eb.jpg?ts=1567891546 -->
+        <img src="statics/images/scissor.jpg" height="150" id="scissor" width="150" onclick="rpsGame(this)"/>
+        <!-- https://img.alicdn.com/imgextra/i3/TB1GBW4LpXXXXXdaXXXXXXXXXXX_!!0-item_pic.jpg -->
+    </div>
+</div>
+
+<div class="container-4">
+    <h2 id="change-color">Challenge 1: Change Colors of All Buttons !</h2>
+    <div class="flex-box-container-4" id="flex-buttons">
+    <form action="">
+        <select name="backdrop" id="background" onchange="buttonColorChange(this)">
+            <option value="random">Random</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="reset">Reset</option>
+        </select>
+    </form> 
+    <button class="btn btn-primary">Wee!</button>
+    <button class="btn btn-danger">Yahoo!</button>
+    <button class="btn btn-warning">Google!</button>
+    <button class="btn btn-success">Facebook!</button>
+    </div>
+</div>
+    <script src="statics/js/script.js"></script>
+</body>
+</html>
