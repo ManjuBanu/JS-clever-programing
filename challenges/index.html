@@ -23,14 +23,14 @@
 </div>
 
 <div class="container-2">
-    <h2>Challenge 1: Cat Generator</h2>
+    <h2>Challenge 2: Cat Generator</h2>
     <button class="btn btn-success" onclick="generateCat()">Generate Cat</button>
     <div class="flex-box-container-2" id="flex-cat-gen">
     </div>
 </div>
 
 <div class="container-3">
-    <h2>Challenge 1: Rock, Paper, Scissors</h2>
+    <h2>Challenge 3: Rock, Paper, Scissors</h2>
     
     <div class="flex-box-container-3" id="flex-rps-div">
         <img src="statics/images/rock.jpeg" height="150" id="rock" width="150" onclick="rpsGame(this)"/>
@@ -42,7 +42,7 @@
 </div>
 
 <div class="container-4">
-    <h2 id="change-color">Challenge 1: Change Colors of All Buttons !</h2>
+    <h2 id="change-color">Challenge 4: Change Colors of All Buttons !</h2>
     <div class="flex-box-container-4" id="flex-buttons">
     <form action="">
         <select name="backdrop" id="background" onchange="buttonColorChange(this)">
@@ -58,6 +58,51 @@
     <button class="btn btn-success">Facebook!</button>
     </div>
 </div>
+
+<div class="container-5">
+    <h2>Challenge 5: Blackjack</h2>
+    <h3><span id="blackjack-result">Let's Play</span></h3>
+    
+    <div class="flex-blackjack-row-1">
+
+        <div id="your-box">
+        <h2>You: <span id="your-blackjack-result">0</span></h2>
+        </div>
+
+        <div class="dealer-box">
+            <h2>Dealer: <span id="dealer-blackjack-result">0</span></h2>
+        </div>
+    </div>
+
+    <div class="flex-blackjack-row-2">
+        <div>
+            <button class="btn-lg btn btn-primary mr-2" id="hit-button">Hit</button>
+            <button class="btn-lg btn btn-warning mr-2" id="stand-button">Stand</button>
+            <button class="btn-lg btn btn-danger mr-2" id="deal-button">Deal</button>
+        </div>
+    </div>
+
+    <div class="flex-blackjack-row-3">
+        <div>
+            <table style="border: 1px solid black">
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Draws</th>
+                </tr>
+                <tr>
+                    <td><span id="wins">0</span></td>
+                    <td><span id="losses">0</span></td>
+                    <td><span id="draws">0</span></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+
+</div>
+
+
     <script src="statics/js/script.js"></script>
 </body>
 </html>

@@ -1,11 +1,12 @@
-.container-1 , .container-2, .container-3, .container-4{
+.container-1 , .container-2, .container-3, .container-4,.container-5{
 border: 2px solid black;
 margin:10px auto;
 width: 65%;
 text-align: center;
 }
 
-.flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-container-4{
+.flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-container-4,
+.flex-blackjack-row-1, .flex-blackjack-row-2, .flex-blackjack-row-3{
     display: flex;
     padding: 10px;
     border: 1px solid gray;
@@ -20,6 +21,37 @@ text-align: center;
     align-items: center;
 }   
 
+.flex-blackjack-row-1, .flex-blackjack-row-2{
+    background: url('https://img.freepik.com/free-photo/jack-spade-heart-ace-card-with-casino-chip-stack-green-poker-table_23-2147881160.jpg?size=1000&ext=jpg'); 
+    /* background: url('https://img.freepik.com/free-photo/royal-flush-playing-card-poker-table_23-2147881130.jpg?size=600&ext=jpg'); */
+    /* background: url('https://images.pexels.com/photos/4253623/pexels-photo-4253623.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'); */
+    /* background: url('https://media.istockphoto.com/photos/green-poker-background-picture-id453187915?k=6&m=453187915&s=612x612&w=0&h=kB43IY-gj4jbxw-_gxsXK11ar2kR8JJjxLX-aXTvjdQ='); */
+    /* background: url('https://image.freepik.com/free-photo/watercolor-teal-blue-green-background-painting-watercolor-dark-blue_145343-69.jpg?size=300&ext=jpg'); */
+    color:whitesmoke;
+}
+.flex-blackjack-row-1 div{
+    border:2px dotted red;
+    height:350px;
+    text-align: center;
+    flex: 2;
+    padding: 10px;
+}
+
+.flex-blackjack-row-1 img{
+    width: 25%;
+    padding:10px;
+}
+
+.flex-blackjack-row-2 button{
+    border:1px solid black;
+    padding: 10px;
+}
+
+.flex-blackjack-row-2 div{
+    border: 1px solid greenyellow;
+    padding: 10px;
+}
+
 .flex-box-container-2 img{
 margin: 10px;
 box-shadow: 0px 10px 50px rgba(0, 0, 0, 7);
@@ -28,3 +60,21 @@ box-shadow: 0px 10px 50px rgba(0, 0, 0, 7);
 .flex-box-container-3 img:hover{
 box-shadow: 0px 10px 50px rgba(103, 50, 1, 233);
 }
+
+
+table , th, td{
+    padding: 5px;
+    border: 1px solid black;
+}
+
+
+/* .flex-blackjack-row-1{
+    display: flex;
+    padding: 10px;
+    border: 1px solid gray;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 250px;
+    background-color: indianred;
+} */
