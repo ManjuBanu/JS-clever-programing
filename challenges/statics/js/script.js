@@ -170,17 +170,24 @@ function buttonReset(){
 /** blackjact functions */
 
 //some needed veriables
-let blackJackGameInit ={
+let blackJackGameInit = {
     'you':{'scoreSpan':'#your-blackjack-score','div':'#your-box', 'score':0},
     'dealer':{'scoreSpan':'#dealer-blackjack-score','div':'#dealer-box', 'score':0},
     'cards':['2','3','4','5','6','7','8','9','10','K','J','Q','A'],
     'cardsMap':{'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'K':10,'J':10,'Q':10,'A':[1,11]},
+    'wins':0,
+    'losses':0,
+    'draws':0,
+    'isStand':false,
+    'isTurnsOver':false,
 }
 
 const YOU = blackJackGameInit['you']
 const DEALER = blackJackGameInit['dealer']
 
 const hitSound = new Audio('statics/sounds/swish.m4a');
+const winSound = new Audio('statics/sounds/cash.mp3');
+const lossSound = new Audio('statics/sounds/aww.mp3');
 
 
 //picking random card image
@@ -195,6 +202,7 @@ const  pickRandomCards = ()=>{
 document.querySelector('#hit-button').addEventListener('click',hitButton);
  
 function hitButton(){
+    if(blackJackGameInit['isStand'] === false){
     let randomCards = pickRandomCards();
     // console.log('YOU',YOU);
     // console.log('DEALER',DEALER);
@@ -204,6 +212,7 @@ function hitButton(){
     showScore(YOU);
     // console.log(YOU['score'],'yourScore');
  }
+}
 
 // To show the card when player clicks on button
 function showCard(randomCards,activePlayer){
@@ -217,10 +226,16 @@ function showCard(randomCards,activePlayer){
 }
 
 
-// blackJack deal button => should remove all images like refresh the page
-document.querySelector('#deal-button').addEventListener('click',dealButtom);
+// blackJack stand button => should remove all images like refresh the page
+document.querySelector('#stand-button').addEventListener('click',dealerLogic);
 
-function dealButtom(){
+// blackJack deal button => should remove all images like refresh the page
+document.querySelector('#deal-button').addEventListener('click',dealButton);
+
+function dealButton(){
+    if(blackJackGameInit['isTurnsOver'] === true){
+
+    blackJackGameInit['isStand'] = false;
     let yourImage = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
 
@@ -230,7 +245,7 @@ function dealButtom(){
     for(i=0; i<dealerImage.length; i++){
         dealerImage[i].remove();
     }
-
+ 
     //reset the score
     YOU['score'] =0;
     DEALER['score'] = 0;
@@ -240,6 +255,12 @@ function dealButtom(){
 
     document.querySelector('#your-blackjack-score').style.color = '#ffffff';
     document.querySelector('#dealer-blackjack-score').style.color = '#ffffff';
+
+    document.querySelector('#blackjack-result').textContent = "Let's play";
+    document.querySelector('#blackjack-result').style.color = 'black';
+
+    blackJackGameInit['isTurnsOver'] = true;
+    }
 }
 
 //update the blackjack score of active player
@@ -264,3 +285,78 @@ function showScore(activePlayer){
     document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
     }
 }
+
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function dealerLogic(){
+    blackJackGameInit['isStand'] = true;
+
+    while(DEALER['score'] < 16 && blackJackGameInit['isStand'] === true){
+        let card = pickRandomCards();
+        showCard(card, DEALER);
+        updateScore(card,DEALER);
+        showScore(DEALER);
+        await sleep(1000);
+    }
+
+        blackJackGameInit['isTurnsOver'] = true;
+        let winner = computeWinner();
+        showResult(winner);
+}
+
+// compute winner and return who won
+//update wins, draw, losses
+function computeWinner(){
+    let winner;
+
+    if(YOU['score'] <= 21){
+        //1. higher score than dealer
+        if(YOU['score'] > DEALER['score'] || (DEALER['score'] >21)){
+            blackJackGameInit['wins']++;
+            winner = YOU;
+        }else if(YOU['score'] < DEALER['score']){
+            blackJackGameInit['losses']++;
+            winner = DEALER;
+        }else if(YOU['score'] === DEALER['score']){
+            blackJackGameInit['draws']++;
+        }
+        //2.when user bust and dealer doesn't 
+    }else if(YOU['score'] > 21 && DEALER['score'] <= 21){
+        blackJackGameInit['losses']++;
+        winner = DEALER;
+    }else if(YOU['score'] > 21 && DEALER['score'] > 21){
+        blackJackGameInit['draws']++;
+    }
+
+    return winner;
+}
+
+
+function showResult(winner){
+    let message, messageColor;
+    if(blackJackGameInit['isTurnsOver'] === true){
+
+    if(winner === YOU){
+        document.querySelector('#wins').textContent = blackJackGameInit['wins'];
+        message = "You won!";
+        messageColor ="green";
+        winSound.play();
+    }else if( winner === DEALER){
+        document.querySelector('#losses').textContent = blackJackGameInit['losses'];
+        message = "You lost!";
+        messageColor ="red";
+        lossSound.play();
+    }else {
+        document.querySelector('#draws').textContent = blackJackGameInit['draws'];
+        message = "You drew!";
+        messageColor ="yellow";
+    }
+
+    document.querySelector('#blackjack-result').textContent = message;
+    document.querySelector('#blackjack-result').style.color = messageColor;
+    // document.querySelector('#blackjack-result').style.fontSize = 30;
+    }
+}
+
