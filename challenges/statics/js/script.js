@@ -166,3 +166,52 @@ function buttonReset(){
     }
 }
 
+
+/** blackjact functions */
+
+//some needed veriables
+let blackJackGameInit ={
+    'you':{'scoreSpan':'#your-blackjack-score','div':'#your-box', 'score':0},
+    'dealer':{'scoreSpan':'#dealer-blackjack-score','div':'#dealer-box', 'score':0},
+}
+
+const YOU = blackJackGameInit['you']
+const DEALER = blackJackGameInit['dealer']
+
+const hitSound = new Audio('statics/sounds/swish.m4a');
+
+
+//black jack hit button 
+document.querySelector('#hit-button').addEventListener('click',hitButton);
+ 
+function hitButton(){
+    // console.log('YOU',YOU);
+    // console.log('DEALER',DEALER);
+    showCard(YOU);
+    // showCard(DEALER);
+ }
+
+// To show the card when player clicks on button
+function showCard(activePlayer){
+    let cardImage = document.createElement('img');
+    console.log('youcardImage',cardImage);
+    cardImage.src = 'statics/images/A.png';
+    document.querySelector(activePlayer['div']).appendChild(cardImage);
+    hitSound.play();
+}
+
+
+// blackJack deal button => should remove all images like refresh the page
+document.querySelector('#deal-button').addEventListener('click',dealButtom);
+
+function dealButtom(){
+    let yourImage = document.querySelector('#your-box').querySelectorAll('img');
+    let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
+
+    for(i=0; i<yourImage.length; i++){
+        yourImage[i].remove();
+    }
+    for(i=0; i<dealerImage.length; i++){
+        dealerImage[i].remove();
+    }
+}
