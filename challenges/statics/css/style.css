@@ -4,6 +4,9 @@ margin:10px auto;
 width: 65%;
 text-align: center;
 }
+.container-5, .flex-blackjack-row-2{
+    background-color:bisque;
+}
 
 .flex-box-container-1, .flex-box-container-2, .flex-box-container-3, .flex-box-container-4,
 .flex-blackjack-row-1, .flex-blackjack-row-2, .flex-blackjack-row-3{
@@ -21,7 +24,7 @@ text-align: center;
     align-items: center;
 }   
 
-.flex-blackjack-row-1, .flex-blackjack-row-2{
+.flex-blackjack-row-1{
     background: url('https://img.freepik.com/free-photo/jack-spade-heart-ace-card-with-casino-chip-stack-green-poker-table_23-2147881160.jpg?size=1000&ext=jpg'); 
     /* background: url('https://img.freepik.com/free-photo/royal-flush-playing-card-poker-table_23-2147881130.jpg?size=600&ext=jpg'); */
     /* background: url('https://images.pexels.com/photos/4253623/pexels-photo-4253623.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'); */
@@ -31,7 +34,7 @@ text-align: center;
 }
 .flex-blackjack-row-1 div{
     border:2px dotted red;
-    height:350px;
+    height:auto;
     text-align: center;
     flex: 2;
     padding: 10px;
